@@ -1,3 +1,8 @@
 export default function ListProducts() {
-  return <div>Ini halaman list product</div>;
+  return (
+    <div className="container__listproduk">
+      <div className="listproduk__header"></div>
+      <div className="list_produk__main"></div>
+    </div>
+  );
 }
