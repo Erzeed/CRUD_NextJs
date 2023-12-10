@@ -8,14 +8,14 @@ export default function Navbar() {
         <div className="function__search">
           <label
             htmlFor="default-search"
-            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            className="mb-2 text-sm font-medium text-gray-900 sr-only"
           >
             Search
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                className="w-4 h-4 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -33,7 +33,7 @@ export default function Navbar() {
             <input
               type="search"
               id="default-search"
-              className="block w-full py-2 px-10 text-sm text-gray-900 border border-gray-300 rounded-lg"
+              className="block w-full py-2 px-10 text-sm text-gray-900 border border-gray-300 rounded-lg dark:bg-[#1F2937] dark:border-none"
               placeholder="Search.."
               required
             />
@@ -44,7 +44,7 @@ export default function Navbar() {
         </div>
         <div className="function__btn">
           <button
-            className="w-20 bg-[#00337C] text-2xl font-bold rounded-full text-white h-9"
+            className="w-20 text-2xl font-bold rounded-full h-9 bg-[#1F2937] text-gray-400 hover:bg-green-200 hover:text-lime-800 hover:font-medium"
             type="button"
           >
             +

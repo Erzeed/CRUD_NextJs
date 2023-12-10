@@ -14,9 +14,9 @@ export default function Table() {
     "Action",
   ];
   return (
-    <div className="table_container w-full border rounded-lg mt-3 max-h-[80vh] overflow-y-scroll overflow-x-hidden">
-      <table className="w-full contoh border-collapse text-left text-sm text-gray-500">
-        <thead className="bg-gray-50 sticky z-10 top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg">
+    <div className="table_container w-full border border-gray-700 rounded-lg mt-3 max-h-[80vh] overflow-y-scroll overflow-x-hidden px-1">
+      <table className="w-full contoh border-collapse text-left text-sm text-gray-500 bg-[#1F2937]">
+        <thead className="bg-[#1F2937] sticky z-10 top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg">
           <tr>
             {dataHeader.map((name) => (
               <th
@@ -45,7 +45,7 @@ export default function Table() {
           <Rows />
         </tbody>
       </table>
-      <div className="table_pagination bg-white w-full flex justify-end my-5 mr-10 sticky bottom-0">
+      {/* <div className="table_pagination bg-white w-full flex justify-end my-5 mr-10 sticky bottom-0">
         <ul className="inline-flex space-x-2">
           <li>
             <button className="flex items-center justify-center w-10 h-10 text-indigo-600 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-indigo-100">
@@ -85,7 +85,7 @@ export default function Table() {
             </button>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }

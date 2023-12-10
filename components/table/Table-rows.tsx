@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 export default function Rows() {
   return (
-    <tr className="hover:bg-gray-100 bg-white">
-      <th className="flex contents-center items-center gap-2 px-5 py-3 font-normal text-gray-900 rounded-l-lg border-y border-l h-[100%]">
+    <tr className="hover:bg-gray-900 bg-[#1F2937] text-gray-400">
+      <th className="flex contents-center items-center px-5 py-3 font-normal rounded-l-lg border-gray-700 border-y border-l h-[100%]">
         <div className="relative h-14 w-14">
           <img
             className="h-full w-full rounded-lg object-cover object-center"
@@ -12,35 +12,37 @@ export default function Rows() {
           <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
         </div>
       </th>
-      <td className="text-center h-[100%] border-y">
-        <span className="inline-flex w-[100px]">Kopi tubruk</span>
+      <td className="text-center h-[100%] w-[100px] border-y border-gray-700">
+        <span className="text-center">Kopi tubruk</span>
       </td>
-      <td className="border-y">
+      <td className="border-y border-gray-700 text-green-950">
         <span className="inline-flex items-center px-2 py-2 rounded-lg gap-1 bg-green-100 text-xs font-semibold w-[200px]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         </span>
       </td>
-      <td className="text-center h-[100%] border-y w-[80px]">Rp.200000</td>
-      <td className="border-y">
-        <div className="flex gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-2 text-xs font-semibold text-blue-600">
+      <td className="text-center h-[100%] border-y border-gray-700 w-[80px]">
+        Rp.200000
+      </td>
+      <td className="border-y border-gray-700">
+        <div className="flex justify-center">
+          <span className="rounded-full bg-blue-50 px-2 py-2 text-xs font-semibold text-blue-600">
             100
           </span>
         </div>
       </td>
-      <td className="border-y">
+      <td className="border-y border-gray-700 text-orange-950">
         <span className="inline-flex justify-center px-2 py-2 rounded-lg gap-1 bg-orange-100 text-xs font-semibold w-[150px]">
           Maju lancar bersama
         </span>
       </td>
-      <td className="border-y">
-        <span className="inline-flex pl-5 text-xs font-semibold w-[100px]">
+      <td className="border-y border-gray-700">
+        <span className="inline-flex pl-5 text-xs font-semibold w-[150px]">
           Cilacap Jawa Tengah
         </span>
       </td>
-      <td className="border-y">feizalreza29@gmail.com</td>
-      <td className="rounded-r-lg border-y border-r">
-        <div className="flex justify-end gap-4">
+      <td className="border-y border-gray-700">feizalreza29@gmail.com</td>
+      <td className="rounded-r-lg border-y border-gray-700 border-r">
+        <div className="flex justify-center gap-4">
           <a x-data="{ tooltip: 'Delete' }" href="#">
             <svg
               xmlns="http://www.w3.org/2000/svg"
