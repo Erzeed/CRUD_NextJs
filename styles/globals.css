@@ -11,3 +11,8 @@
   font-family: 'Archivo', sans-serif;
   scroll-behavior: smooth;
 }
+
+table.contoh {
+  border-collapse: separate; 
+  border-spacing: 1.5px;
+}
