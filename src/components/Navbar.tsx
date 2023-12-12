@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <>
+    <nav className="px-5 flex justify-between items-center w-full h-[65px] border-b border-gray-700 dark:bg-black sticky top-0 z-20">
       <div className="header__logo">
         <p>logo</p>
       </div>
@@ -51,6 +51,6 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-    </>
+    </nav>
   );
 }

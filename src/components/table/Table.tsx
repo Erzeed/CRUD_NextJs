@@ -2,6 +2,7 @@ import Rows from "./Table-rows";
 
 /* eslint-disable react/no-unknown-property */
 export default function Table() {
+  // console.log(product);
   const dataHeader = [
     "",
     "Nama",

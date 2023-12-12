@@ -1,4 +1,4 @@
-import ListProducts from "@/pages/products/list_products";
+import ListProducts from "./products/list_products";
 
 export default function App() {
   return <ListProducts />;
