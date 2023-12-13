@@ -1,4 +1,15 @@
+"use client";
+
+import { useState } from "react";
+import ModalForm from "./Modal-form";
+
 export default function Navbar() {
+  const [hidden, setHidden] = useState(true);
+
+  const onHandleModal = () => {
+    hidden ? setHidden(false) : setHidden(true);
+  };
+
   return (
     <nav className="px-5 flex justify-between items-center w-full h-[65px] border-b border-gray-700 dark:bg-black sticky top-0 z-20">
       <div className="header__logo">
@@ -46,11 +57,13 @@ export default function Navbar() {
           <button
             className="w-20 text-2xl font-bold rounded-full h-9 bg-[#1F2937] text-gray-400 hover:bg-green-200 hover:text-lime-800 hover:font-medium"
             type="button"
+            onClick={onHandleModal}
           >
             +
           </button>
         </div>
       </div>
+      <ModalForm isHidden={hidden} closeBtn={onHandleModal} />
     </nav>
   );
 }

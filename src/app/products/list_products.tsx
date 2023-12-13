@@ -1,4 +1,4 @@
-import Modal from "@/components/Modal-form";
+// import Modal from "@/components/Modal-form";
 import Table from "@/components/table/Table";
 
 export default function ListProducts() {
@@ -14,7 +14,7 @@ export default function ListProducts() {
           <Table />
         </div>
       </div>
-      <Modal />
+      {/* <Modal /> */}
     </div>
   );
 }

@@ -1,8 +1,16 @@
 import Rows from "./Table-rows";
 
+const getData = async () => {
+  const { BASE_URL } = process.env;
+  const resp = await fetch(`${BASE_URL}/api/products`);
+  const json = resp.json();
+  return json;
+};
+
 /* eslint-disable react/no-unknown-property */
-export default function Table() {
-  // console.log(product);
+export default async function Table() {
+  const data = await getData();
+
   const dataHeader = [
     "",
     "Nama",
