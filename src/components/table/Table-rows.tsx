@@ -1,57 +1,102 @@
-/* eslint-disable react/no-unknown-property */
-export default function Rows() {
+"use client";
+import { useRouter } from "next/navigation";
+import React from "react";
+
+interface RowProps {
+  id: number;
+  nama: string;
+  deskripsi: string;
+  harga: number;
+  stok: number;
+  foto: string;
+  suplier_id: number;
+  suplier: {
+    id_suplier: number;
+    nama_suplier: string;
+    alamat: string;
+    email: string;
+  };
+}
+
+const Rows: React.FC<RowProps> = ({
+  id,
+  nama,
+  deskripsi,
+  harga,
+  stok,
+  foto,
+  suplier,
+}) => {
+  const { nama_suplier, alamat, email } = suplier;
+  const router = useRouter();
+
+  const onHandleDelete = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    const id = (event.target as HTMLInputElement).id;
+    try {
+      await fetch("/api/products", {
+        method: "DELETE",
+        body: JSON.stringify(id),
+      });
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <tr className="hover:bg-gray-900 bg-[#1F2937] text-gray-400">
       <th className="flex contents-center items-center px-5 py-3 font-normal rounded-l-lg border-gray-700 border-y border-l h-[100%]">
         <div className="relative h-14 w-14">
           <img
             className="h-full w-full rounded-lg object-cover object-center"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            src={foto}
             alt=""
           />
           <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
         </div>
       </th>
       <td className="text-center h-[100%] w-[100px] border-y border-gray-700">
-        <span className="text-center">Kopi tubruk</span>
+        <span className="text-center">{nama}</span>
       </td>
       <td className="border-y border-gray-700 text-green-950">
         <span className="inline-flex items-center px-2 py-2 rounded-lg gap-1 bg-green-100 text-xs font-semibold w-[200px]">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          {deskripsi}
         </span>
       </td>
       <td className="text-center h-[100%] border-y border-gray-700 w-[80px]">
-        Rp.200000
+        {harga}
       </td>
       <td className="border-y border-gray-700">
         <div className="flex justify-center">
           <span className="rounded-full bg-blue-50 px-2 py-2 text-xs font-semibold text-blue-600">
-            100
+            {stok}
           </span>
         </div>
       </td>
       <td className="border-y border-gray-700 text-orange-950">
         <span className="inline-flex justify-center px-2 py-2 rounded-lg gap-1 bg-orange-100 text-xs font-semibold w-[150px]">
-          Maju lancar bersama
+          {nama_suplier}
         </span>
       </td>
       <td className="border-y border-gray-700">
         <span className="inline-flex pl-5 text-xs font-semibold w-[150px]">
-          Cilacap Jawa Tengah
+          {alamat}
         </span>
       </td>
-      <td className="border-y border-gray-700">feizalreza29@gmail.com</td>
+      <td className="border-y border-gray-700">{email}</td>
       <td className="rounded-r-lg border-y border-gray-700 border-r">
         <div className="flex justify-center gap-4">
-          <a x-data="{ tooltip: 'Delete' }" href="#">
+          <button type="button" onClick={(event) => onHandleDelete(event)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
+              className="h-6 w-6 cursor-pointer"
               x-tooltip="tooltip"
+              id={id}
             >
               <path
                 strokeLinecap="round"
@@ -59,7 +104,7 @@ export default function Rows() {
                 d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
               />
             </svg>
-          </a>
+          </button>
           <a x-data="{ tooltip: 'Edite' }" href="#">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,4 +126,6 @@ export default function Rows() {
       </td>
     </tr>
   );
-}
+};
+
+export default Rows;

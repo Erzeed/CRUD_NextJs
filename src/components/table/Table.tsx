@@ -1,15 +1,30 @@
+"use client";
+import { Key, useEffect, useState } from "react";
 import Rows from "./Table-rows";
 
 const getData = async () => {
-  const { BASE_URL } = process.env;
-  const resp = await fetch(`${BASE_URL}/api/products`);
-  const json = resp.json();
-  return json;
+  try {
+    const resp = await fetch("http://localhost:3000/api/products", {
+      next: { revalidate: 0 },
+    });
+    const json = await resp.json(); // Add 'await' here
+    return json;
+  } catch (error) {
+    return error;
+  }
 };
 
 /* eslint-disable react/no-unknown-property */
-export default async function Table() {
-  const data = await getData();
+export default function Table() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const getFech = async () => {
+      const resp = await getData();
+      setData(resp);
+    };
+    getFech();
+  }, []);
 
   const dataHeader = [
     "",
@@ -27,9 +42,9 @@ export default async function Table() {
       <table className="w-full contoh border-collapse text-left text-sm text-gray-500 bg-[#1F2937]">
         <thead className="bg-[#1F2937] sticky z-10 top-0 bg-opacity-50 backdrop-filter backdrop-blur-lg">
           <tr>
-            {dataHeader.map((name) => (
+            {dataHeader.map((name, i) => (
               <th
-                key={1}
+                key={i}
                 scope="col"
                 className="px-6 py-4 font-xs text-gray-400 tracking-wide"
               >
@@ -43,15 +58,11 @@ export default async function Table() {
           </tr>
         </thead>
         <tbody className="table_main w-full max-h-[20vh]">
-          <Rows />
-          <Rows />
-          <Rows />
-          <Rows />
-          <Rows />
-          <Rows />
-          <Rows />
-          <Rows />
-          <Rows />
+          {data !== undefined
+            ? data.map((res: { id: Key | null | undefined }) => (
+                <Rows key={res.id} {...res} />
+              ))
+            : ""}
         </tbody>
       </table>
       {/* <div className="table_pagination bg-white w-full flex justify-end my-5 mr-10 sticky bottom-0">

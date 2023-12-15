@@ -27,12 +27,8 @@ export default function ModalForm({ isHidden, closeBtn }: Props) {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    // console.log(event);
     const { id, value } = event.target;
-    // setData((prevData) => ({
-    //   ...prevData,
-    //   [id]: id === "uploadimage" ? files?.[0] : value,
-    // }));
+
     if (event.target instanceof HTMLInputElement && id === "uploadimage") {
       const files = event.target.files;
       setData((prevData) => ({
